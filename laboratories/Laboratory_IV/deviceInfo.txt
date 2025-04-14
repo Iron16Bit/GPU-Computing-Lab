@@ -1,0 +1,7 @@
+Device 0: NVIDIA A30
+  Compute capability: 8.0
+  Total global memory: 24169 MB
+  Multiprocessors: 56
+  Memory Clock Rate: 1215 MHz
+  Memory Bus Width: 3072 bits
+  Theoretical Memory Bandwidth: 933.12 GB/s

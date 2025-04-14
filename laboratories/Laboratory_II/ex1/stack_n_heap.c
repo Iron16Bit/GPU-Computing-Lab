@@ -90,6 +90,20 @@ int main(void) {
         /* |           Put here your code           | */
         /* |========================================| */
 
+        int a[LEN], b[LEN];
+        for (int i=0; i<LEN; i++) {
+            a[i] = i;
+            b[i] = 100 * i;
+        }
+        int c[LEN];
+        for (int i=0; i<LEN; i++) {
+            c[i] = a[i] + b[i];
+        }
+
+        PRINT_RESULT_VECTOR(a, "a");
+        PRINT_RESULT_VECTOR(b, "b");
+        PRINT_RESULT_VECTOR(c, "c");
+
 
 #endif
     // ---------------------- Heap vectors 1 -----------------------
@@ -103,6 +117,12 @@ int main(void) {
         /* |========================================| */
         /* |           Put here your code           | */
         /* |========================================| */
+
+        int* c1 = (int*)malloc(LEN*sizeof(int));
+        for (int i=0; i<LEN; i++) {
+            c1[i] = a[i] + b[i];
+        }
+        PRINT_RESULT_VECTOR(c1, "c1");
 
 
 #endif
@@ -154,6 +174,24 @@ int main(void) {
         /* |           Put here your code           | */
         /* |========================================| */
 
+        int A[N][M], B[N][M];
+        for (int i=0; i<N; i++) {
+            for (int j=0; j<M; j++) {
+                A[i][j] = i+j;
+                B[i][j] = (i+j)*100;
+            }
+        } 
+        PRINT_RESULT_MATRIX(A, "A");
+        PRINT_RESULT_MATRIX(B, "B");
+
+        int C[N][M];
+        for (int i=0; i<N; i++) {
+            for (int j=0; j<M; j++) {
+                C[i][j] = A[i][j] + B[i][j];
+            }
+        }
+        PRINT_RESULT_MATRIX(C, "C");
+
 
 #endif
 
@@ -165,6 +203,15 @@ int main(void) {
         /* |========================================| */
         /* |           Put here your code           | */
         /* |========================================| */
+
+        int **C1 = (int **)malloc(N*sizeof(int));
+        for (int i=0; i<N; i++) {
+            C1[i] = (int *)malloc(M*sizeof(int));
+            for (int j=0; j<M; j++) {
+                C1[i][j] = A[i][j] + B[i][j];
+            }
+        }
+        PRINT_RESULT_MATRIX(C1, "C1");
 
 
 #endif

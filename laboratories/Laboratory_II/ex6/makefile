@@ -1,5 +1,5 @@
 # create a makefile variable named CC for your C/C++ compiler (es gcc, c++, ... )
-CC = c++
+CC = gcc
 
 # create a makefile variable named OPT with your favorite C flags (at least with -std=c99 -O3)
 OPT = -std=c99 -O3
@@ -9,14 +9,14 @@ OBJ_FOLDER := obj
 SRC_FOLDER := src
 BATCH_OUT_FOLDER := outputs
 
-MAIN    =  get_time_test.c
+MAIN    =  coo.c
 OBJECTS = $(OBJ_FOLDER)/my_time_lib.o
 
 all: $(BIN_FOLDER)/get_time_test
 
 #create the target 'bin/get_time_test' which needs 'get_time_test.c' and 'my_time_lib.o', generate the folder 'bin' and compile get_time_test.c using CC and OPT
 $(BIN_FOLDER)/get_time_test: ${MAIN} $(OBJ_FOLDER)/my_time_lib.o
-	$(CC) ${MAIN} -o $(BIN_FOLDER)/get_time_test $(OPT)
+	$(CC) ${MAIN} -o $(BIN_FOLDER)/get_time_test $(OPT) -lm
 
 
 

@@ -57,7 +57,36 @@ int main(int argc, char *argv[]) {
         /* |           Put here your code           | */
         /* |========================================| */
 
+        double time[10];
 
+        for (int k=0; k<12; k++) {
+            TIMER_DEF(var);
+            TIMER_START(var);
+
+            a = (dtype*)malloc(n*n*sizeof(dtype));
+            b = (dtype*)malloc(n*n*sizeof(dtype));
+            for (int i=0; i<n*n; i++) {
+                a[i] = rand()/(1<<11);
+                b[i] = rand()/(1<<11);
+            }
+
+            c = (dtype*)malloc(n*n*sizeof(dtype));
+            for (int i=0; i<n*n; i++) {
+                c[i] = a[i]+b[i];
+            }
+
+            free(a);
+            free(b);
+            free(c);
+
+            TIMER_STOP(var);
+
+            if (k > 1) {
+                time[k-2] = TIMER_ELAPSED(var);
+                printf("Timer %d: %f\n", k-2, TIMER_ELAPSED(var));
+            }
+
+        }
 
 #endif
 
@@ -76,6 +105,16 @@ int main(int argc, char *argv[]) {
         /* |========================================| */
         /* |           Put here your code           | */
         /* |========================================| */
+
+        for (int i=0; i<10; i++) {
+            mu += time[i];
+        }
+        mu /= 10;
+
+        for (int i=0; i<10; i++) {
+            sigma += ((time[i] - mu)*(time[i] - mu));
+        }
+        sigma /= 10;
 
 #endif
 
