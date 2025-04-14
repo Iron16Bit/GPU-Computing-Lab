@@ -98,7 +98,37 @@ int main(void) {
     }
     printf("\n");
     printf("Consecutive Access Times:\n");
+    printf("\t\t\t1\t\t\t3\t\t\t7\t\t\t14\t\t\t28\t\t\t56\n");
+    for (int i=0; i<6; i++) {
+        printf("%d\t\t", block_size[i]);
+        for (int j=0; j<6; j++) {
+            printf("%f\t\t", consecutive_times[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n\n");
+
+    // Transorm times in bandwidth
+    int gbs = N * sizeof(dtype);
+    for (int i=0; i<6; i++) {
+        for (int j=0; j<6; j++) {
+            consecutive_times[i][j] = gbs / consecutive_times[i][j];
+            linear_times[i][j] = gbs / linear_times[i][j];
+        }
+    }
+
+    printf("Linear Access GB/S:\n");
     printf("\t\t1\t\t3\t\t7\t\t14\t\t28\t\t56\n");
+    for (int i=0; i<6; i++) {
+        printf("%d\t\t", block_size[i]);
+        for (int j=0; j<6; j++) {
+            printf("%f\t\t", linear_times[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+    printf("Consecutive Access GB/S:\n");
+    printf("\t\t\t1\t\t\t3\t\t\t7\t\t\t14\t\t\t28\t\t\t56\n");
     for (int i=0; i<6; i++) {
         printf("%d\t\t", block_size[i]);
         for (int j=0; j<6; j++) {
